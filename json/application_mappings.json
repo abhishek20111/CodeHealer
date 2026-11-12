@@ -1,0 +1,74 @@
+{
+  "100000001": {
+    "app_id": "100000001",
+    "name": "SampleApp",
+    "description": "Sample application used to demonstrate CodeHealer",
+    "applications": {
+      "api": {
+        "name": "api",
+        "display_name": "SampleApp API",
+        "repo": "github.com/your-username/sample-app",
+        "upstream": "github.com/your-org/sample-app",
+        "branch": "main",
+        "description": "Spring Boot API for sample analytics",
+        "tech_stack": "Spring Boot, Java 17, MySQL",
+        "environments": {
+          "e1": "api-dev.example.com",
+          "e2": "api-qa.example.com",
+          "e3": "api.example.com"
+        },
+        "url_to_code_mapping": {
+          "/items/list": {
+            "file": "src/main/java/com/example/sampleapp/controller/ItemListController.java",
+            "description": "List items"
+          },
+          "/items/create": {
+            "file": "src/main/java/com/example/sampleapp/controller/ItemCreateController.java",
+            "description": "Create a new item"
+          },
+          "/items/*": {
+            "file": "src/main/java/com/example/sampleapp/service/ItemService.java",
+            "description": "Item service"
+          },
+          "/appHealth": {
+            "file": "src/main/java/com/example/sampleapp/common/HealthController.java",
+            "description": "Health check endpoint"
+          }
+        },
+        "common_error_patterns": {
+          "500": {
+            "likely_causes": [
+              "Database connection timeout",
+              "Null pointer exception in service layer",
+              "External API call failure",
+              "Memory/resource exhaustion"
+            ],
+            "check_files": [
+              "src/main/java/com/example/sampleapp/config/DatabaseConfig.java",
+              "src/main/java/com/example/sampleapp/service/*Service.java",
+              "src/main/resources/application.yml"
+            ]
+          },
+          "404": {
+            "likely_causes": [
+              "Route not registered",
+              "API version mismatch",
+              "Resource not found"
+            ],
+            "check_files": [
+              "src/main/java/com/example/sampleapp/config/WebMvcConfig.java"
+            ]
+          }
+        },
+        "slack_channels": {
+          "errors": "app-errors",
+          "alerts": "app-alerts",
+          "team": "team-channel"
+        },
+        "maintainers": [
+          "your-username"
+        ]
+      }
+    }
+  }
+}

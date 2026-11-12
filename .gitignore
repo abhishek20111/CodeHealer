@@ -1,0 +1,41 @@
+# ── Python ──────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# ── Virtual environments ────────────────────────────────────
+venv/
+.venv/
+env/
+ENV/
+
+# ── Secrets & local config ──────────────────────────────────
+.env
+.env.*
+!.env.example
+.env.local
+*.pem
+*.key
+
+# ── Local state (session + vector store) ────────────────────
+chroma_db/
+chroma_db*/
+chroma_ui/
+json/sessions.json
+
+# ── IDE / OS ────────────────────────────────────────────────
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ── Build / test artifacts ──────────────────────────────────
+*.log
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ── Node (for copilot proxy) ────────────────────────────────
+copilot_proxy_simple/

@@ -1,0 +1,28 @@
+[
+  {
+    "id": "nightly-vuln-guard",
+    "name": "Nightly Vulnerability Guard",
+    "description": "Scans critical vulnerabilities for sample-app and auto-creates a fix branch + PR",
+    "enabled": false,
+    "schedule": {
+      "type": "interval",
+      "minutes": 60
+    },
+    "steps": [
+      {
+        "id": "scan",
+        "name": "Scan Critical Vulns",
+        "question": "Show critical vulnerabilities for the sample-app backend (APP_ID 100000001). Only show packages from pom.xml with safe versions available."
+      },
+      {
+        "id": "fix",
+        "name": "Auto Fix & PR",
+        "question": "For the top fixable critical vulnerability found, create branch ai-agent/auto-fix-nightly on fork your-username/sample-app. Use patch_file to update the version in pom.xml, then create a Pull Request.",
+        "condition": "scan.result contains CRITICAL",
+        "auto_respond": "Proceed"
+      }
+    ],
+    "created_at": "2026-01-01T00:00:00",
+    "history": []
+  }
+]

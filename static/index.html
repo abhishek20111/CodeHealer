@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeHealer — Autonomous Software Maintenance</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+    <link rel="stylesheet" href="/static/style.css?v=5">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Left Sidebar: Chat History -->
+    <aside class="history-sidebar" id="historySidebar">
+        <div class="sidebar-header">
+            <h3>💬 Chats</h3>
+            <button class="new-chat-btn" onclick="newChat()">+ New</button>
+        </div>
+        <div class="session-list" id="sessionList"></div>
+    </aside>
+
+    <div class="app">
+        <!-- Header -->
+        <header>
+            <button class="hamburger" onclick="toggleHistory()">☰</button>
+            <h1>🩺 CodeHealer <span class="badge vector">Autonomous</span></h1>
+            <button class="sidebar-btn" onclick="toggleSidebar()">📊</button>
+            <button class="sidebar-btn watchflow-btn" onclick="toggleWatchflow()">⏰</button>
+        </header>
+
+        <!-- Chat Container -->
+        <div class="chat-container" id="chatContainer">
+            <div class="welcome-msg">
+                <h2>🩺 CodeHealer</h2>
+                <p>AI-Powered Autonomous Software Maintenance</p>
+                <p class="hint">Vulnerability Scan • Error Investigation • Auto-Fix PRs • Scheduled Workflows ⚡</p>
+            </div>
+        </div>
+
+        <!-- Status Banner -->
+        <div class="status-banner hidden" id="statusBanner">
+            <span id="statusText"></span>
+            <button class="cancel-btn" id="cancelTaskBtn" onclick="cancelTask()" style="display:none">Cancel Task</button>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-area">
+            <div class="input-wrapper">
+                <input type="text" id="questionInput" placeholder="Ask a question about your database..."
+                    onkeydown="if(event.key==='Enter')sendQuestion()">
+                <button onclick="sendQuestion()" id="sendBtn">Send</button>
+            </div>
+            <div class="streaming-indicator" id="streamingIndicator" style="display:none">
+                <span class="dot-pulse"></span> Streaming...
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Sidebar: DB Schema -->
+    <aside class="db-sidebar" id="dbSidebar">
+        <div class="sidebar-header">
+            <h3>📊 Database Schema</h3>
+            <button class="close-btn" onclick="toggleSidebar()">✕</button>
+        </div>
+        <div class="db-content" id="dbContent">
+            <!-- Schema loading progress (shown while loading) -->
+            <div class="schema-loader" id="schemaLoader">
+                <div class="loader-text" id="loaderText">Loading schema...</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-detail" id="progressDetail">0 / 0 tables</div>
+            </div>
+            <!-- DB info populated by JS after loading -->
+            <div id="dbSchemaList"></div>
+        </div>
+    </aside>
+
+    <!-- WatchFlow Sidebar -->
+    <aside class="watchflow-sidebar" id="watchflowSidebar">
+        <div class="sidebar-header">
+            <h3>⏰ WatchFlows</h3>
+            <button class="close-btn" onclick="toggleWatchflow()">✕</button>
+        </div>
+        <div class="watchflow-content" id="watchflowContent">
+            <div class="wf-actions">
+                <button class="wf-refresh-btn" onclick="loadWatchflows()">🔄 Refresh</button>
+            </div>
+            <div id="watchflowList"></div>
+        </div>
+    </aside>
+
+    <script src="/static/script.js?v=5"></script>
+</body>
+</html>

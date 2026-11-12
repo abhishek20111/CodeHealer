@@ -1,0 +1,47 @@
+# ══════════════════════════════════════════════════════════════════════════════
+# AI Agent — Vector + GitHub + Slack + MCP + OBS Integration
+# ══════════════════════════════════════════════════════════════════════════════
+#
+# NEW FEATURES vs ai_agent_langchain_vector_githubmcp_chartui:
+#   + OBS (log observability) OpenSearch integration
+#   + Slack MCP integration for #obs channel search
+#   + Modular integration architecture (integrations/obs, integrations/slack)
+#   + OBS-specific tools (search_obs_logs, count_obs_logs, get_recent_errors)
+#
+# ARCHITECTURE:
+#   LLM        → GitHub Models API (GPT-4o-mini)
+#   Embeddings → Local Ollama (nomic-embed-text)
+#   Vector DB  → ChromaDB (local persistence)
+#   Databases  → MySQL (tool integration)
+#   GitHub     → GitHub MCP tools
+#   Slack      → Slack MCP (enterprise-docs server)
+#   OBS        → OpenSearch Proxy API
+#
+# INSTALL: pip install -r requirements.txt
+# RUN:     export GITHUB_TOKEN="ghp_xxxx" && python web_server.py
+# ══════════════════════════════════════════════════════════════════════════════
+
+# ── LangChain Core ───────────────────────────────────────────────────────────
+langchain>=0.3.0
+langchain-core>=0.3.0
+langchain-openai>=0.3.0
+langchain-ollama>=0.3.0
+langgraph>=0.4.0
+
+# ── Vector Database ──────────────────────────────────────────────────────────
+chromadb>=1.0.0
+
+# ── Web Server ───────────────────────────────────────────────────────────────
+starlette>=0.40.0
+uvicorn>=0.30.0
+
+# ── Database ─────────────────────────────────────────────────────────────────
+mysql-connector-python>=9.0.0
+
+# ── HTTP Client ──────────────────────────────────────────────────────────────
+# httpx: For OBS OpenSearch API calls (async, proxy support)
+httpx>=0.27.0
+
+# ── Utilities ────────────────────────────────────────────────────────────────
+# python-dotenv: Load .env file for OBS credentials
+python-dotenv>=1.0.0

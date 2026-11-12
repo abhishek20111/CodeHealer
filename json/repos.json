@@ -1,0 +1,10 @@
+[
+    {
+        "name": "sample-app",
+        "repo": "github.com/your-username/sample-app",
+        "upstream": "github.com/your-org/sample-app",
+        "branch": "main",
+        "description": "Sample Spring Boot application (your fork of your-org/sample-app)",
+        "active": true
+    }
+]

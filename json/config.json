@@ -1,0 +1,33 @@
+{
+  "users": {
+    "primary": {
+      "name": "Your Name",
+      "slack_id": "U00000000",
+      "email": "you@example.com",
+      "role": "admin"
+    }
+  },
+  "slack": {
+    "channels": {
+      "errors": "app-errors",
+      "alerts": "app-alerts",
+      "team": "team-channel",
+      "approvals": "team-channel"
+    },
+    "notification_preferences": {
+      "tag_users_on_error": true,
+      "tag_users_on_proposal": true
+    }
+  },
+  "workflow": {
+    "auto_analyze_errors": true,
+    "require_approval": true,
+    "approval_timeout_hours": 24,
+    "max_retries": 3
+  },
+  "obs": {
+    "default_time_range": "1h",
+    "max_logs_to_analyze": 10,
+    "error_severity_threshold": "ERROR"
+  }
+}

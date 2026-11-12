@@ -1,0 +1,11 @@
+[
+  {
+    "id": "db_sample",
+    "name": "sample_db",
+    "host": "127.0.0.1",
+    "user": "sample_user",
+    "password": "change_me",
+    "database": "sample_db",
+    "active": false
+  }
+]
